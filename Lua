@@ -1,3 +1,5 @@
+local UserInputService = game:GetService("UserInputService")
+
 local Library = {}
 
 function Library:CreateWindow(windowtitle)
@@ -22,7 +24,7 @@ function Library:CreateWindow(windowtitle)
 	local Category = Instance.new("Frame")
 	
 	HosimUIByJerio.Name = "HosimUIByJerio"
-	HosimUIByJerio.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	HosimUIByJerio.Parent = game.CoreGui
 	HosimUIByJerio.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	ambientShadow.Name = "ambientShadow"
@@ -98,6 +100,44 @@ function Library:CreateWindow(windowtitle)
 	Category.BorderSizePixel = 0
 	Category.Position = UDim2.new(0, 115, 0, 5)
 	Category.Size = UDim2.new(0, 620, 0, 480)
+
+	local gui = ambientShadow
+
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
 end
 
 return Library
