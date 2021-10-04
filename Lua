@@ -631,6 +631,30 @@ function Library:CreateWindow(windowtitle)
 				coroutine.wrap(TRWBS_fake_script)()
 			end
 			
+			function Element:CreateLabel(labeltitle)
+				local LabelFrame = Instance.new("Frame")
+				local LabelTitle = Instance.new("TextLabel")
+				
+				LabelFrame.Name = "LabelFrame"
+				LabelFrame.Parent = SectionIn
+				LabelFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				LabelFrame.BorderSizePixel = 0
+				LabelFrame.Size = UDim2.new(0, 100, 0, 100)
+				LabelFrame.ZIndex = 2
+
+				LabelTitle.Name = "LabelTitle"
+				LabelTitle.Parent = LabelFrame
+				LabelTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				LabelTitle.BackgroundTransparency = 1.000
+				LabelTitle.BorderSizePixel = 0
+				LabelTitle.Size = UDim2.new(0, 305, 0, 20)
+				LabelTitle.Font = Enum.Font.GothamSemibold
+				LabelTitle.Text = "This Is A Useless Label"
+				LabelTitle.TextColor3 = Color3.fromRGB(220, 220, 220)
+				LabelTitle.TextSize = 12.000
+				
+			end
+			
 			function Element:CreateDropdown(dropdowntitle, dropdownintitle, dropdowndescription, dropdowncallback)
 				local DropdownFrame = Instance.new("Frame")
 				local DropdownTitle = Instance.new("TextLabel")
@@ -798,7 +822,7 @@ function Library:CreateWindow(windowtitle)
 					IremDropdown.BorderSizePixel = 0
 					IremDropdown.Size = UDim2.new(0, 140, 0, 20)
 					IremDropdown.Font = Enum.Font.GothamSemibold
-					IremDropdown.Text = "1"
+					IremDropdown.Text = itemname or "Item"
 					IremDropdown.TextColor3 = Color3.fromRGB(200, 200, 200)
 					IremDropdown.TextSize = 12.000
 					
