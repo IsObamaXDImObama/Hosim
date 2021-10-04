@@ -1,5 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
 
+local HttpService = game:GetService("HttpService")
+
 local Library = {}
 
 function Library:CreateWindow(windowtitle)
@@ -23,7 +25,7 @@ function Library:CreateWindow(windowtitle)
 	
 	local Category = Instance.new("Frame")
 	
-	HosimUIByJerio.Name = "HosimUIByJerio"
+	HosimUIByJerio.Name = HttpService:GenerateGUID(true)
 	HosimUIByJerio.Parent = game.CoreGui
 	HosimUIByJerio.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
