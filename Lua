@@ -601,7 +601,7 @@ function Library:CreateWindow(windowtitle)
 				TextBox.TextColor3 = Color3.fromRGB(200, 200, 200)
 				TextBox.TextSize = 12.000
 				TextBox.Changed:Connect(function()
-					pcall(textboxxcallback, script.Parent.Text)
+					pcall(textboxxcallback, TextBox.Text)
 				end)
 				
 				local function AHKF_fake_script() -- DescriptionButton_3.DescriptionButtonScript 
