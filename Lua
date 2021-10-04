@@ -202,6 +202,8 @@ function Library:CreateWindow(windowtitle)
 		coroutine.wrap(HDIRC_fake_script)()
 		
 	end
+	
+	return Window
 end
 
 return Library
