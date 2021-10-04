@@ -159,6 +159,7 @@ function Library:CreateWindow(windowtitle)
 		Page.BackgroundTransparency = 1.000
 		Page.BorderSizePixel = 0
 		Page.Size = UDim2.new(0, 620, 0, 480)
+		Page.Visible = false
 		
 		PageUiGrid.Name = "PageUiGrid"
 		PageUiGrid.Parent = Page
