@@ -1,0 +1,103 @@
+local Library = {}
+
+function Library:CreateWindow(windowtitle)
+	local HosimUIByJerio = Instance.new("ScreenGui")
+	
+	local ambientShadow = Instance.new("ImageLabel")
+	
+	local Window = Instance.new("Frame")
+	
+	local LeftWindow = Instance.new("Frame")
+	
+	local Top = Instance.new("Frame")
+	
+	local Logo = Instance.new("ImageLabel")
+	
+	local WindowTitle = Instance.new("TextLabel")
+	
+	local TabWindow = Instance.new("Frame")
+	
+	local TabWindowUIGrid = Instance.new("UIGridLayout")
+	
+	local Category = Instance.new("Frame")
+	
+	HosimUIByJerio.Name = "HosimUIByJerio"
+	HosimUIByJerio.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	HosimUIByJerio.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	ambientShadow.Name = "ambientShadow"
+	ambientShadow.Parent = HosimUIByJerio
+	ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+	ambientShadow.BackgroundTransparency = 1.000
+	ambientShadow.BorderSizePixel = 0
+	ambientShadow.Position = UDim2.new(0, 793, 0, 419)
+	ambientShadow.Size = UDim2.new(0, 760, 0, 510)
+	ambientShadow.ZIndex = -1
+	ambientShadow.Image = "rbxassetid://1316045217"
+	ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	ambientShadow.ImageTransparency = 0.500
+	ambientShadow.ScaleType = Enum.ScaleType.Slice
+	ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+	Window.Name = "Window"
+	Window.Parent = ambientShadow
+	Window.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	Window.Position = UDim2.new(0, 10, 0, 10)
+	Window.Size = UDim2.new(0, 740, 0, 490)
+
+	LeftWindow.Name = "LeftWindow"
+	LeftWindow.Parent = Window
+	LeftWindow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	LeftWindow.BorderSizePixel = 0
+	LeftWindow.Size = UDim2.new(0, 110, 0, 490)
+
+	Top.Name = "Top"
+	Top.Parent = LeftWindow
+	Top.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	Top.BorderSizePixel = 0
+	Top.Size = UDim2.new(0, 110, 0, 70)
+
+	Logo.Name = "Logo"
+	Logo.Parent = Top
+	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Logo.BackgroundTransparency = 1.000
+	Logo.BorderSizePixel = 0
+	Logo.Position = UDim2.new(0.363636374, 0, 0, 0)
+	Logo.Size = UDim2.new(0, 30, 0, 30)
+	Logo.Image = "rbxassetid://7645815809"
+
+	WindowTitle.Name = "WindowTitle"
+	WindowTitle.Parent = Top
+	WindowTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	WindowTitle.BackgroundTransparency = 1.000
+	WindowTitle.BorderSizePixel = 0
+	WindowTitle.Position = UDim2.new(0.0454545468, 0, 0.428571433, 0)
+	WindowTitle.Size = UDim2.new(0, 100, 0, 30)
+	WindowTitle.Font = Enum.Font.GothamBlack
+	WindowTitle.Text = windowtitle or "Window Title Here"
+	WindowTitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+	WindowTitle.TextSize = 14.000
+	WindowTitle.TextWrapped = true
+	WindowTitle.TextYAlignment = Enum.TextYAlignment.Top
+
+	TabWindow.Name = "TabWindow"
+	TabWindow.Parent = LeftWindow
+	TabWindow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	TabWindow.BorderSizePixel = 0
+	TabWindow.Position = UDim2.new(0, 0, 0, 70)
+	TabWindow.Size = UDim2.new(0, 110, 0, 420)
+	
+	TabWindowUIGrid.Name = "TabWindowUIGrid"
+	TabWindowUIGrid.Parent = TabWindow
+	TabWindowUIGrid.SortOrder = Enum.SortOrder.LayoutOrder
+	TabWindowUIGrid.CellSize = UDim2.new(0, 110, 0, 25)
+	
+	Category.Name = "Category"
+	Category.Parent = Window
+	Category.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	Category.BorderSizePixel = 0
+	Category.Position = UDim2.new(0, 115, 0, 5)
+	Category.Size = UDim2.new(0, 620, 0, 480)
+end
+
+return Library
