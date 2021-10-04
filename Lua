@@ -267,6 +267,9 @@ function Library:CreateWindow(windowtitle)
 				Button.Text = buttonintext or "Click/Get"
 				Button.TextColor3 = Color3.fromRGB(220, 220, 220)
 				Button.TextSize = 12.000
+				Button.MouseButton1Click:Connect(function()
+					pcall(buttoncallback)
+				end)
 
 				ButtonUICorner.CornerRadius = UDim.new(0, 4)
 				ButtonUICorner.Name = "ButtonUICorner"
@@ -324,16 +327,6 @@ function Library:CreateWindow(windowtitle)
 				DescrioptionTXTUICorner.Name = "DescrioptionTXTUICorner"
 				DescrioptionTXTUICorner.Parent = DescriptionTXT
 				
-				local function MILOKU_fake_script() -- Button.ButtonScript 
-					local script = Instance.new('LocalScript', Button)
-
-					script.Parent.MouseButton1Click:Connect(function()
-						pcall(
-							buttonname
-						)
-					end)
-				end
-				coroutine.wrap(MILOKU_fake_script)()
 				local function YGKZMB_fake_script() -- DescriptionButton.DescriptionButtonScript 
 					local script = Instance.new('LocalScript', DescriptionButton)
 
