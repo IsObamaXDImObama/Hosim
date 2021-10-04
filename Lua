@@ -1,31 +1,18 @@
-local UserInputService = game:GetService("UserInputService")
-
-local HttpService = game:GetService("HttpService")
-
 local Library = {}
 
 function Library:CreateWindow(windowtitle)
 	local HosimUIByJerio = Instance.new("ScreenGui")
-	
 	local ambientShadow = Instance.new("ImageLabel")
-	
 	local Window = Instance.new("Frame")
-	
 	local LeftWindow = Instance.new("Frame")
-	
 	local Top = Instance.new("Frame")
-	
 	local Logo = Instance.new("ImageLabel")
-	
 	local WindowTitle = Instance.new("TextLabel")
-	
+	local TabWindowUIGrid = Instance.new("UIGridLayout")
+	local Category = Instance.new("Frame")
 	local TabWindow = Instance.new("Frame")
 	
-	local TabWindowUIGrid = Instance.new("UIGridLayout")
-	
-	local Category = Instance.new("Frame")
-	
-	HosimUIByJerio.Name = HttpService:GenerateGUID(true)
+	HosimUIByJerio.Name = "HosimUIByJerio"
 	HosimUIByJerio.Parent = game.CoreGui
 	HosimUIByJerio.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -83,6 +70,18 @@ function Library:CreateWindow(windowtitle)
 	WindowTitle.TextSize = 14.000
 	WindowTitle.TextWrapped = true
 	WindowTitle.TextYAlignment = Enum.TextYAlignment.Top
+	
+	TabWindowUIGrid.Name = "TabWindowUIGrid"
+	TabWindowUIGrid.Parent = TabWindow
+	TabWindowUIGrid.SortOrder = Enum.SortOrder.LayoutOrder
+	TabWindowUIGrid.CellSize = UDim2.new(0, 110, 0, 25)
+
+	Category.Name = "Category"
+	Category.Parent = Window
+	Category.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	Category.BorderSizePixel = 0
+	Category.Position = UDim2.new(0, 115, 0, 5)
+	Category.Size = UDim2.new(0, 620, 0, 480)
 
 	TabWindow.Name = "TabWindow"
 	TabWindow.Parent = LeftWindow
@@ -91,164 +90,50 @@ function Library:CreateWindow(windowtitle)
 	TabWindow.Position = UDim2.new(0, 0, 0, 70)
 	TabWindow.Size = UDim2.new(0, 110, 0, 420)
 	
-	TabWindowUIGrid.Name = "TabWindowUIGrid"
-	TabWindowUIGrid.Parent = TabWindow
-	TabWindowUIGrid.SortOrder = Enum.SortOrder.LayoutOrder
-	TabWindowUIGrid.CellSize = UDim2.new(0, 110, 0, 25)
-	
-	Category.Name = "Category"
-	Category.Parent = Window
-	Category.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-	Category.BorderSizePixel = 0
-	Category.Position = UDim2.new(0, 115, 0, 5)
-	Category.Size = UDim2.new(0, 620, 0, 480)
+	local function YIQPD_fake_script() -- ambientShadow.DraggerScript 
+		local script = Instance.new('LocalScript', ambientShadow)
 
-	local gui = ambientShadow
+		local UserInputService = game:GetService("UserInputService")
 
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
+		local gui = script.Parent
 
-	local function update(input)
-		local delta = input.Position - dragStart
-		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
+		local dragging
+		local dragInput
+		local dragStart
+		local startPos
 
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
+		local function update(input)
+			local delta = input.Position - dragStart
+			gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 		end
-	end)
 
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
+		gui.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = gui.Position
 
-	UserInputService.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			update(input)
-		end
-	end)
-	
-	
-
-	
-	
-	
-	local Window = {}
-	
-	function Window:CreateTab(tabcategoryname)
-		
-		local TabButton = Instance.new("TextButton")
-		
-		local Page = Instance.new("Frame")
-		
-		local PageUiGrid = Instance.new("UIGridLayout")
-		
-		TabButton.Name = "TabButton"
-		TabButton.Parent = TabWindow
-		TabButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-		TabButton.BackgroundTransparency = 1.000
-		TabButton.BorderSizePixel = 0
-		TabButton.Size = UDim2.new(0, 110, 0, 25)
-		TabButton.Font = Enum.Font.GothamSemibold
-		TabButton.Text = tabcategoryname
-		TabButton.TextColor3 = Color3.fromRGB(150, 150, 150)
-		TabButton.TextSize = 12.000
-
-		Page.Name = tabcategoryname
-		Page.Parent = Category
-		Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Page.BackgroundTransparency = 1.000
-		Page.BorderSizePixel = 0
-		Page.Size = UDim2.new(0, 620, 0, 480)
-		
-		PageUiGrid.Name = "PageUiGrid"
-		PageUiGrid.Parent = Page
-		PageUiGrid.SortOrder = Enum.SortOrder.LayoutOrder
-		PageUiGrid.CellPadding = UDim2.new(0, 10, 0, 10)
-		PageUiGrid.CellSize = UDim2.new(0, 300, 0, 15)
-		
-		local function HDIRC_fake_script() -- TabButton.TabButtonScript 
-			local script = Instance.new('LocalScript', TabButton)
-
-			script.Parent.MouseButton1Click:Connect(function()
-				for _, tabbutton in pairs(script.Parent.Parent:GetChildren()) do
-					if tabbutton:IsA("TextButton") then
-						tabbutton.TextColor3 = Color3.fromRGB(150, 150, 150)
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
 					end
-				end
-				script.Parent.TextColor3 = Color3.fromRGB(220, 220, 220)
-				for _, page in pairs(script.Parent.Parent.Parent.Parent.Category:GetChildren()) do
-					if page:IsA("Frame") then
-						page.Visible = false
-					end
-				end
-				wait(0.05)
-				script.Parent.Parent.Parent.Parent.Category[script.Parent.Text].Visible = true
-			end)
-		end
-		coroutine.wrap(HDIRC_fake_script)()
-		
-		
-		
-		local Tab = {}
-		
-		
-		function Tab:CreateSection(SectionTitle)
-			local Section = Instance.new("Frame")
+				end)
+			end
+		end)
 
-			local SectionTitle = Instance.new("TextLabel")
+		gui.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
 
-			local SectionIn = Instance.new("Frame")
-
-			local SectionInUIGrid = Instance.new("UIGridLayout")
-
-			Section.Name = "Section"
-			Section.Parent = Page
-			Section.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-			Section.BorderSizePixel = 0
-			Section.Size = UDim2.new(0, 300, 0, 15)
-
-			SectionTitle.Name = "SectionTitle"
-			SectionTitle.Parent = Section
-			SectionTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			SectionTitle.BackgroundTransparency = 1.000
-			SectionTitle.BorderSizePixel = 0
-			SectionTitle.Size = UDim2.new(0, 305, 0, 15)
-			SectionTitle.Font = Enum.Font.GothamBold
-			SectionTitle.Text = SectionTitle or "Section"
-			SectionTitle.TextColor3 = Color3.fromRGB(220, 220, 220)
-			SectionTitle.TextSize = 12.000
-
-			SectionIn.Name = "SectionIn"
-			SectionIn.Parent = Section
-			SectionIn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			SectionIn.BorderSizePixel = 0
-			SectionIn.Position = UDim2.new(0, 0, 1, 0)
-			SectionIn.Size = UDim2.new(0, 305, 0, 0)
-
-			SectionInUIGrid.Name = "SectionInUIGrid"
-			SectionInUIGrid.Parent = SectionIn
-			SectionInUIGrid.SortOrder = Enum.SortOrder.LayoutOrder
-			SectionInUIGrid.CellSize = UDim2.new(0, 305, 0, 20)
-		end
-		
-		return Tab
+		UserInputService.InputChanged:Connect(function(input)
+			if input == dragInput and dragging then
+				update(input)
+			end
+		end)
 	end
-	
-	return Window
+	coroutine.wrap(YIQPD_fake_script)()
 end
 
 return Library
