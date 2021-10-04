@@ -352,6 +352,160 @@ function Library:CreateWindow(windowtitle)
 					end)
 				end
 				coroutine.wrap(IKKFONJ_fake_script)()
+				
+			end
+			
+			function Element:CreateToggle(toggletitle, descriptiontextto, togglecallback)
+				local ToggleFrame = Instance.new("Frame")
+				local ToggleTitle = Instance.new("TextLabel")
+				local DescriptionButton_2 = Instance.new("TextButton")
+				local NofiticationAndDescription_2 = Instance.new("Frame")
+				local DescriptionTXT_2 = Instance.new("TextLabel")
+				local ProccedDescriptionButton_2 = Instance.new("TextButton")
+				local DescrioptionTXTUICorner_2 = Instance.new("UICorner")
+				local ToggleBackground = Instance.new("Frame")
+				local ToggleButtonUICorner = Instance.new("UICorner")
+				local ToggleButton = Instance.new("TextButton")
+				local ToggleButtonUICorner_2 = Instance.new("UICorner")
+				
+				ToggleFrame.Name = "ToggleFrame"
+				ToggleFrame.Parent = SectionIn
+				ToggleFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				ToggleFrame.BorderSizePixel = 0
+				ToggleFrame.Size = UDim2.new(0, 100, 0, 100)
+				ToggleFrame.ZIndex = 2
+
+				ToggleTitle.Name = "ToggleTitle"
+				ToggleTitle.Parent = ToggleFrame
+				ToggleTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleTitle.BackgroundTransparency = 1.000
+				ToggleTitle.BorderSizePixel = 0
+				ToggleTitle.Size = UDim2.new(0, 215, 0, 20)
+				ToggleTitle.Font = Enum.Font.GothamSemibold
+				ToggleTitle.Text = toggletitle or "Toggle"
+				ToggleTitle.TextColor3 = Color3.fromRGB(220, 220, 220)
+				ToggleTitle.TextSize = 12.000
+				ToggleTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+				DescriptionButton_2.Name = "DescriptionButton"
+				DescriptionButton_2.Parent = ToggleFrame
+				DescriptionButton_2.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				DescriptionButton_2.BorderSizePixel = 0
+				DescriptionButton_2.Position = UDim2.new(0.955628455, 0, 0, 0)
+				DescriptionButton_2.Size = UDim2.new(0, 15, 0, 20)
+				DescriptionButton_2.Font = Enum.Font.GothamBold
+				DescriptionButton_2.Text = "?"
+				DescriptionButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+				DescriptionButton_2.TextSize = 12.000
+
+				NofiticationAndDescription_2.Name = "NofiticationAndDescription"
+				NofiticationAndDescription_2.Parent = ToggleFrame
+				NofiticationAndDescription_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+				NofiticationAndDescription_2.BackgroundTransparency = 0.600
+				NofiticationAndDescription_2.BorderSizePixel = 0
+				NofiticationAndDescription_2.Position = UDim2.new(-0.377049178, 0, -2.25, 0)
+				NofiticationAndDescription_2.Size = UDim2.new(0, 740, 0, 0)
+				NofiticationAndDescription_2.Visible = false
+				NofiticationAndDescription_2.ZIndex = 3
+
+				DescriptionTXT_2.Name = "DescriptionTXT"
+				DescriptionTXT_2.Parent = NofiticationAndDescription_2
+				DescriptionTXT_2.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+				DescriptionTXT_2.BorderSizePixel = 0
+				DescriptionTXT_2.Position = UDim2.new(0.162162155, 0, 0.244897962, 0)
+				DescriptionTXT_2.Size = UDim2.new(0, 500, 0, 250)
+				DescriptionTXT_2.Visible = false
+				DescriptionTXT_2.Font = Enum.Font.GothamSemibold
+				DescriptionTXT_2.Text = descriptiontextto or "This Is A Description."
+				DescriptionTXT_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+				DescriptionTXT_2.TextSize = 14.000
+				DescriptionTXT_2.TextWrapped = true
+				DescriptionTXT_2.TextXAlignment = Enum.TextXAlignment.Left
+				DescriptionTXT_2.TextYAlignment = Enum.TextYAlignment.Top
+
+				ProccedDescriptionButton_2.Name = "ProccedDescriptionButton"
+				ProccedDescriptionButton_2.Parent = DescriptionTXT_2
+				ProccedDescriptionButton_2.BackgroundColor3 = Color3.fromRGB(5, 126, 13)
+				ProccedDescriptionButton_2.BorderSizePixel = 0
+				ProccedDescriptionButton_2.Position = UDim2.new(0.800000012, 0, 0.899999976, 0)
+				ProccedDescriptionButton_2.Size = UDim2.new(0, 100, 0, 25)
+				ProccedDescriptionButton_2.Visible = false
+				ProccedDescriptionButton_2.Font = Enum.Font.GothamSemibold
+				ProccedDescriptionButton_2.Text = "Procced"
+				ProccedDescriptionButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+				ProccedDescriptionButton_2.TextSize = 14.000
+
+				DescrioptionTXTUICorner_2.CornerRadius = UDim.new(0, 3)
+				DescrioptionTXTUICorner_2.Name = "DescrioptionTXTUICorner"
+				DescrioptionTXTUICorner_2.Parent = DescriptionTXT_2
+
+				ToggleBackground.Name = "ToggleBackground"
+				ToggleBackground.Parent = ToggleFrame
+				ToggleBackground.BackgroundColor3 = Color3.fromRGB(114, 114, 182)
+				ToggleBackground.Position = UDim2.new(0.750819623, 0, 0, 0)
+				ToggleBackground.Size = UDim2.new(0, 20, 0, 20)
+
+				ToggleButtonUICorner.CornerRadius = UDim.new(0, 2)
+				ToggleButtonUICorner.Name = "ToggleButtonUICorner"
+				ToggleButtonUICorner.Parent = ToggleBackground
+
+				ToggleButton.Name = "ToggleButton"
+				ToggleButton.Parent = ToggleBackground
+				ToggleButton.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+				ToggleButton.BorderSizePixel = 0
+				ToggleButton.Position = UDim2.new(0.116503924, 0, 0.083334446, 0)
+				ToggleButton.Size = UDim2.new(0, 16, 0, 16)
+				ToggleButton.Font = Enum.Font.GothamBold
+				ToggleButton.Text = ""
+				ToggleButton.TextColor3 = Color3.fromRGB(220, 220, 220)
+				ToggleButton.TextSize = 18.000
+
+				ToggleButtonUICorner_2.CornerRadius = UDim.new(0, 2)
+				ToggleButtonUICorner_2.Name = "ToggleButtonUICorner"
+				ToggleButtonUICorner_2.Parent = ToggleButton
+				
+				local function WDDPJP_fake_script() -- DescriptionButton_2.DescriptionButtonScript 
+					local script = Instance.new('LocalScript', DescriptionButton_2)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent.Parent.NofiticationAndDescription.Visible = true
+						script.Parent.Parent.NofiticationAndDescription:TweenSize(UDim2.new(0, 740,0, 490),"InOut","Quad",0.3)
+						wait(0.2)
+						script.Parent.Parent.NofiticationAndDescription.DescriptionTXT.Visible = true
+						script.Parent.Parent.NofiticationAndDescription.DescriptionTXT.ProccedDescriptionButton.Visible = true
+					end)
+				end
+				coroutine.wrap(WDDPJP_fake_script)()
+				local function PZOHUY_fake_script() -- ProccedDescriptionButton_2.ProccedDescriptionButtonScript 
+					local script = Instance.new('LocalScript', ProccedDescriptionButton_2)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent.Parent.Parent:TweenSize(UDim2.new(0, 740,0, 0),"InOut","Quad",0.3)
+						wait(0.2)
+						script.Parent.Visible = false
+						script.Parent.Parent.Visible = false
+						wait(0.1)
+						script.Parent.Parent.Parent.Visible = false
+					end)
+				end
+				coroutine.wrap(PZOHUY_fake_script)()
+				local function JJHONAU_fake_script() -- ToggleButton.ToggleButtonScript 
+					local script = Instance.new('LocalScript', ToggleButton)
+
+					local toggled = false
+					script.Parent.MouseButton1Click:Connect(function()
+						if toggled == false then
+							toggled = true
+							script.Parent.Text = "✓"
+							pcall(togglecallback, toggled)
+						elseif toggled == true then
+							toggled = false
+							script.Parent.Text = ""
+							pcall(togglecallback, toggled)
+						end
+					end)
+				end
+				coroutine.wrap(JJHONAU_fake_script)()
 			end
 			
 			return Element
