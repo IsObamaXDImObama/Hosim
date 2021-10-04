@@ -134,6 +134,40 @@ function Library:CreateWindow(windowtitle)
 		end)
 	end
 	coroutine.wrap(YIQPD_fake_script)()
+	
+	local WindowC = {}
+	
+	function WindowC:CreatePage(pagename)
+		local TabButton = Instance.new("TextButton")
+		local Page = Instance.new("Frame")
+		local PageUiGrid = Instance.new("UIGridLayout")
+		
+		TabButton.Name = "TabButton"
+		TabButton.Parent = TabWindow
+		TabButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		TabButton.BackgroundTransparency = 1.000
+		TabButton.BorderSizePixel = 0
+		TabButton.Size = UDim2.new(0, 110, 0, 25)
+		TabButton.Font = Enum.Font.GothamSemibold
+		TabButton.Text = pagename or "Page"
+		TabButton.TextColor3 = Color3.fromRGB(150, 150, 150)
+		TabButton.TextSize = 12.000
+
+		Page.Name = pagename or "Page"
+		Page.Parent = Category
+		Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Page.BackgroundTransparency = 1.000
+		Page.BorderSizePixel = 0
+		Page.Size = UDim2.new(0, 620, 0, 480)
+		
+		PageUiGrid.Name = "PageUiGrid"
+		PageUiGrid.Parent = Page
+		PageUiGrid.SortOrder = Enum.SortOrder.LayoutOrder
+		PageUiGrid.CellPadding = UDim2.new(0, 10, 0, 10)
+		PageUiGrid.CellSize = UDim2.new(0, 300, 0, 15)
+	end
+	
+	return WindowC
 end
 
 return Library
