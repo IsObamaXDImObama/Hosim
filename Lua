@@ -672,7 +672,7 @@ function Library:CreateWindow(windowtitle)
 				DropdownFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 				DropdownFrame.BorderSizePixel = 0
 				DropdownFrame.Size = UDim2.new(0, 100, 0, 100)
-				DropdownFrame.ZIndex = 2
+				DropdownFrame.ZIndex = 3
 
 				DropdownTitle.Name = "DropdownTitle"
 				DropdownTitle.Parent = DropdownFrame
@@ -833,7 +833,7 @@ function Library:CreateWindow(windowtitle)
 							script.Parent.Parent:TweenSize(UDim2.new(0, 140,0, 0),"InOut","Quad",0.3)
 							script.Parent.Parent.Parent.Text = script.Parent.Text
 							wait(0.01)
-							pcall(dropdowncallback, script.Parent.Text)
+							pcall(dropdowncallback, IremDropdown.Text)
 							wait(0.3)
 							script.Parent.Parent.Visible = false
 						end)
