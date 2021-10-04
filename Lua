@@ -165,6 +165,27 @@ function Library:CreateWindow(windowtitle)
 		PageUiGrid.SortOrder = Enum.SortOrder.LayoutOrder
 		PageUiGrid.CellPadding = UDim2.new(0, 10, 0, 10)
 		PageUiGrid.CellSize = UDim2.new(0, 300, 0, 15)
+		
+		local function PORI_fake_script() -- TabButton.TabButtonScript 
+			local script = Instance.new('LocalScript', TabButton)
+
+			script.Parent.MouseButton1Click:Connect(function()
+				for _, tabbutton in pairs(script.Parent.Parent:GetChildren()) do
+					if tabbutton:IsA("TextButton") then
+						tabbutton.TextColor3 = Color3.fromRGB(150, 150, 150)
+					end
+				end
+				script.Parent.TextColor3 = Color3.fromRGB(220, 220, 220)
+				for _, page in pairs(script.Parent.Parent.Parent.Parent.Category:GetChildren()) do
+					if page:IsA("Frame") then
+						page.Visible = false
+					end
+				end
+				wait(0.05)
+				script.Parent.Parent.Parent.Parent.Category[script.Parent.Text].Visible = true
+			end)
+		end
+		coroutine.wrap(PORI_fake_script)()
 	end
 	
 	return WindowC
