@@ -142,7 +142,7 @@ function Library:CreateWindow(windowtitle)
 	end)
 	
 	
-	-- Window End
+
 	
 	
 	
@@ -163,11 +163,11 @@ function Library:CreateWindow(windowtitle)
 		TabButton.BorderSizePixel = 0
 		TabButton.Size = UDim2.new(0, 110, 0, 25)
 		TabButton.Font = Enum.Font.GothamSemibold
-		TabButton.Text = tabcategoryname or "Page"
+		TabButton.Text = tabcategoryname
 		TabButton.TextColor3 = Color3.fromRGB(150, 150, 150)
 		TabButton.TextSize = 12.000
 
-		Page.Name = tabcategoryname or "Page"
+		Page.Name = tabcategoryname
 		Page.Parent = Category
 		Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Page.BackgroundTransparency = 1.000
@@ -203,20 +203,18 @@ function Library:CreateWindow(windowtitle)
 		
 		
 		
-		
-		
 		local Tab = {}
 		
 		
 		function Tab:CreateSection(SectionTitle)
 			local Section = Instance.new("Frame")
-			
+
 			local SectionTitle = Instance.new("TextLabel")
-			
+
 			local SectionIn = Instance.new("Frame")
-			
+
 			local SectionInUIGrid = Instance.new("UIGridLayout")
-			
+
 			Section.Name = "Section"
 			Section.Parent = Page
 			Section.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
