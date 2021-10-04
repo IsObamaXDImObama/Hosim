@@ -631,6 +631,194 @@ function Library:CreateWindow(windowtitle)
 				coroutine.wrap(TRWBS_fake_script)()
 			end
 			
+			function Element:CreateDropdown(dropdowntitle, dropdownintitle, dropdowndescription, dropdowncallback)
+				local DropdownFrame = Instance.new("Frame")
+				local DropdownTitle = Instance.new("TextLabel")
+				local DescriptionButton_4 = Instance.new("TextButton")
+				local NofiticationAndDescription_4 = Instance.new("Frame")
+				local DescriptionTXT_4 = Instance.new("TextLabel")
+				local ProccedDescriptionButton_4 = Instance.new("TextButton")
+				local DescrioptionTXTUICorner_4 = Instance.new("UICorner")
+				local dropdownButton = Instance.new("TextButton")
+				local dropdownSectionFrame = Instance.new("ScrollingFrame")
+				local dropdownUiList = Instance.new("UIListLayout")
+				
+				DropdownFrame.Name = "DropdownFrame"
+				DropdownFrame.Parent = SectionIn
+				DropdownFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				DropdownFrame.BorderSizePixel = 0
+				DropdownFrame.Size = UDim2.new(0, 100, 0, 100)
+				DropdownFrame.ZIndex = 2
+
+				DropdownTitle.Name = "DropdownTitle"
+				DropdownTitle.Parent = DropdownFrame
+				DropdownTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				DropdownTitle.BackgroundTransparency = 1.000
+				DropdownTitle.BorderSizePixel = 0
+				DropdownTitle.Size = UDim2.new(0, 144, 0, 20)
+				DropdownTitle.Font = Enum.Font.GothamSemibold
+				DropdownTitle.Text = dropdowntitle or "Dropdown"
+				DropdownTitle.TextColor3 = Color3.fromRGB(220, 220, 220)
+				DropdownTitle.TextSize = 12.000
+				DropdownTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+				DescriptionButton_4.Name = "DescriptionButton"
+				DescriptionButton_4.Parent = DropdownFrame
+				DescriptionButton_4.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				DescriptionButton_4.BorderSizePixel = 0
+				DescriptionButton_4.Position = UDim2.new(0.955628455, 0, 0, 0)
+				DescriptionButton_4.Size = UDim2.new(0, 15, 0, 20)
+				DescriptionButton_4.Font = Enum.Font.GothamBold
+				DescriptionButton_4.Text = "?"
+				DescriptionButton_4.TextColor3 = Color3.fromRGB(200, 200, 200)
+				DescriptionButton_4.TextSize = 12.000
+
+				NofiticationAndDescription_4.Name = "NofiticationAndDescription"
+				NofiticationAndDescription_4.Parent = DropdownFrame
+				NofiticationAndDescription_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+				NofiticationAndDescription_4.BackgroundTransparency = 0.600
+				NofiticationAndDescription_4.BorderSizePixel = 0
+				NofiticationAndDescription_4.Position = UDim2.new(-0.377049178, 0, -4.75, 0)
+				NofiticationAndDescription_4.Size = UDim2.new(0, 740, 0, 0)
+				NofiticationAndDescription_4.ZIndex = 3
+
+				DescriptionTXT_4.Name = "DescriptionTXT"
+				DescriptionTXT_4.Parent = NofiticationAndDescription_4
+				DescriptionTXT_4.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+				DescriptionTXT_4.BorderSizePixel = 0
+				DescriptionTXT_4.Position = UDim2.new(0.162162155, 0, 0.244897962, 0)
+				DescriptionTXT_4.Size = UDim2.new(0, 500, 0, 250)
+				DescriptionTXT_4.Visible = false
+				DescriptionTXT_4.Font = Enum.Font.GothamSemibold
+				DescriptionTXT_4.Text = dropdowndescription or "This Is A Description."
+				DescriptionTXT_4.TextColor3 = Color3.fromRGB(200, 200, 200)
+				DescriptionTXT_4.TextSize = 14.000
+				DescriptionTXT_4.TextWrapped = true
+				DescriptionTXT_4.TextXAlignment = Enum.TextXAlignment.Left
+				DescriptionTXT_4.TextYAlignment = Enum.TextYAlignment.Top
+
+				ProccedDescriptionButton_4.Name = "ProccedDescriptionButton"
+				ProccedDescriptionButton_4.Parent = DescriptionTXT_4
+				ProccedDescriptionButton_4.BackgroundColor3 = Color3.fromRGB(5, 126, 13)
+				ProccedDescriptionButton_4.BorderSizePixel = 0
+				ProccedDescriptionButton_4.Position = UDim2.new(0.800000012, 0, 0.899999976, 0)
+				ProccedDescriptionButton_4.Size = UDim2.new(0, 100, 0, 25)
+				ProccedDescriptionButton_4.Visible = false
+				ProccedDescriptionButton_4.Font = Enum.Font.GothamSemibold
+				ProccedDescriptionButton_4.Text = "Procced"
+				ProccedDescriptionButton_4.TextColor3 = Color3.fromRGB(200, 200, 200)
+				ProccedDescriptionButton_4.TextSize = 14.000
+
+				DescrioptionTXTUICorner_4.CornerRadius = UDim.new(0, 3)
+				DescrioptionTXTUICorner_4.Name = "DescrioptionTXTUICorner"
+				DescrioptionTXTUICorner_4.Parent = DescriptionTXT_4
+
+				dropdownButton.Name = "dropdownButton"
+				dropdownButton.Parent = DropdownFrame
+				dropdownButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				dropdownButton.BorderSizePixel = 0
+				dropdownButton.Position = UDim2.new(0.473661214, 0, 0, 0)
+				dropdownButton.Size = UDim2.new(0, 140, 0, 20)
+				dropdownButton.Font = Enum.Font.GothamSemibold
+				dropdownButton.Text = dropdownintitle or "Dropdown"
+				dropdownButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+				dropdownButton.TextSize = 12.000
+
+				dropdownSectionFrame.Name = "dropdownSectionFrame"
+				dropdownSectionFrame.Parent = dropdownButton
+				dropdownSectionFrame.Active = true
+				dropdownSectionFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+				dropdownSectionFrame.BorderSizePixel = 0
+				dropdownSectionFrame.Position = UDim2.new(0, 0, 1, 0)
+				dropdownSectionFrame.Size = UDim2.new(0, 140, 0, 0)
+				dropdownSectionFrame.Visible = false
+				dropdownSectionFrame.ZIndex = 5
+				dropdownSectionFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+				dropdownSectionFrame.ScrollBarThickness = 1
+
+				dropdownUiList.Name = "dropdownUiList"
+				dropdownUiList.Parent = dropdownSectionFrame
+				dropdownUiList.SortOrder = Enum.SortOrder.LayoutOrder
+				
+				local function QNRDT_fake_script() -- DescriptionButton_4.DescriptionButtonScript 
+					local script = Instance.new('LocalScript', DescriptionButton_4)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent.Parent.NofiticationAndDescription.Visible = true
+						script.Parent.Parent.NofiticationAndDescription:TweenSize(UDim2.new(0, 740,0, 490),"InOut","Quad",0.3)
+						wait(0.2)
+						script.Parent.Parent.NofiticationAndDescription.DescriptionTXT.Visible = true
+						script.Parent.Parent.NofiticationAndDescription.DescriptionTXT.ProccedDescriptionButton.Visible = true
+					end)
+				end
+				coroutine.wrap(QNRDT_fake_script)()
+				local function ZTYO_fake_script() -- ProccedDescriptionButton_4.ProccedDescriptionButtonScript 
+					local script = Instance.new('LocalScript', ProccedDescriptionButton_4)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent.Parent.Parent:TweenSize(UDim2.new(0, 740,0, 0),"InOut","Quad",0.3)
+						wait(0.2)
+						script.Parent.Visible = false
+						script.Parent.Parent.Visible = false
+						wait(0.1)
+						script.Parent.Parent.Parent.Visible = false
+					end)
+				end
+				coroutine.wrap(ZTYO_fake_script)()
+
+				local function BZGNPD_fake_script() -- dropdownSectionFrame.dorpdownsectionautoscaleScript 
+					local script = Instance.new('LocalScript', dropdownSectionFrame)
+
+					script.Parent.CanvasSize = UDim2.new(0,0,0,script.Parent.dropdownUiList.AbsoluteContentSize.Y)
+					script.Parent.ChildAdded:Connect(function()
+						script.Parent.CanvasSize = UDim2.new(0,0,0,script.Parent.dropdownUiList.AbsoluteContentSize.Y + script.Parent.IremDropdown.Size.Y.Offset + script.Parent.dropdownUiList.Padding.Offset)
+					end)
+				end
+				coroutine.wrap(BZGNPD_fake_script)()
+				local function MQYS_fake_script() -- dropdownButton.DropdownButtonScript 
+					local script = Instance.new('LocalScript', dropdownButton)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent.dropdownSectionFrame:TweenSize(UDim2.new(0, 140,0, 160),"InOut","Quad",0.3)
+						wait(0.05)
+						script.Parent.dropdownSectionFrame.Visible = true
+					end)
+				end
+				coroutine.wrap(MQYS_fake_script)()
+				
+				local Dropdown = {}
+				
+				function Dropdown:CreateItem(itemname)
+					local IremDropdown = Instance.new("TextButton")
+					
+					IremDropdown.Name = "IremDropdown"
+					IremDropdown.Parent = dropdownSectionFrame
+					IremDropdown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					IremDropdown.BackgroundTransparency = 1.000
+					IremDropdown.BorderSizePixel = 0
+					IremDropdown.Size = UDim2.new(0, 140, 0, 20)
+					IremDropdown.Font = Enum.Font.GothamSemibold
+					IremDropdown.Text = "1"
+					IremDropdown.TextColor3 = Color3.fromRGB(200, 200, 200)
+					IremDropdown.TextSize = 12.000
+					
+					local function HYQRW_fake_script() -- IremDropdown.ItemDropdownScript 
+						local script = Instance.new('LocalScript', IremDropdown)
+
+						script.Parent.MouseButton1Click:Connect(function()
+							script.Parent.Parent:TweenSize(UDim2.new(0, 140,0, 0),"InOut","Quad",0.3)
+							script.Parent.Parent.Parent.Text = script.Parent.Text
+							pcall(dropdowncallback, script.Parent.Text)
+							wait(0.3)
+							script.Parent.Parent.Visible = false
+						end)
+					end
+					coroutine.wrap(HYQRW_fake_script)()
+				end
+				
+				return Dropdown
+			end
+			
 			return Element
 		end
 		
